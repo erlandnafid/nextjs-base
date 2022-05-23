@@ -1,0 +1,33 @@
+.btn-primary {
+  color: #fff;
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+}
+
+.btn-primary:focus {
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+  box-shadow: none;
+}
+
+.btn-primary:active {
+  background-color: #0d6efd !important;
+  border-color: #0d6efd !important;
+  box-shadow: none !important;
+}
+
+// SM - Override style on small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+}
+
+// MD - Override style on medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint
+@media (min-width: 768px) {
+}
+
+// LG - Override style on large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+}
+
+// XL - Override style on extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+}

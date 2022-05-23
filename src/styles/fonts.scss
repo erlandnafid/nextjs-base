@@ -1,0 +1,85 @@
+/* 
+# Font
+- fs-100          -> font-size: 100px;
+- fw-100          -> font-weight: 100;
+- lh-100          -> line-height: 100px;
+
+# Override font on small devices (landscape phones, 576px and up)
+- fs-sm-100       -> font-size: 100px;
+- fw-sm-100       -> font-weight: 100;
+- lh-sm-100       -> line-height: 100px;
+
+# Override font on medium devices (tablets, 768px and up)
+- fs-md-100       -> font-size: 100px;
+- fw-md-100       -> font-weight: 100;
+- lh-md-100       -> line-height: 100px;
+
+# Override font on large devices (desktops, 992px and up)
+- fs-lg-100       -> font-size: 100px;
+- fw-lg-100       -> font-weight: 100;
+- lh-lg-100       -> line-height: 100px;
+
+# Override font on Extra large devices (large desktops, 1200px and up)
+- fs-xl-100       -> font-size: 100px;
+- fw-xl-100       -> font-weight: 100;
+- lh-xl-100       -> line-height: 100px;
+*/
+
+@mixin generateFontSize($prefix) {
+  @for $i from 1 through length($sizes) {
+    $size: nth($sizes, $i);
+    .fs-#{$prefix}#{$size} {
+      font-size: $px * $size;
+    }
+  }
+}
+
+@mixin generateFontWeight($prefix) {
+  @for $i from 1 through length($font_weight) {
+    $weight: nth($font_weight, $i);
+    .fw-#{$prefix}#{$weight} {
+      font-weight: $weight;
+    }
+  }
+}
+
+@mixin generateLineHeight($prefix) {
+  @for $i from 1 through length($sizes) {
+    $size: nth($sizes, $i);
+    .lh-#{$prefix}#{$size} {
+      line-height: $px * $size;
+    }
+  }
+}
+
+@include generateFontSize('');
+@include generateFontWeight('');
+@include generateLineHeight('');
+
+// SM - Override style on small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  @include generateFontSize('sm-');
+  @include generateFontWeight('sm-');
+  @include generateLineHeight('sm-');
+}
+
+// MD - Override style on medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint
+@media (min-width: 768px) {
+  @include generateFontSize('md-');
+  @include generateFontWeight('md-');
+  @include generateLineHeight('md-');
+}
+
+// LG - Override style on large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  @include generateFontSize('lg-');
+  @include generateFontWeight('lg-');
+  @include generateLineHeight('lg-');
+}
+
+// XL - Override style on extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  @include generateFontSize('xl-');
+  @include generateFontWeight('xl-');
+  @include generateLineHeight('xl-');
+}

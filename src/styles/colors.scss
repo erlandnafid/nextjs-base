@@ -1,0 +1,68 @@
+/* 
+# Color
+- c-ffffff    -> color: #ffffff;
+- bc-ffffff    -> background-color: #ffffff;
+
+# Override color on small devices (landscape phones, 576px and up)
+- c-sm-ffffff -> color: #ffffff;
+- bc-sm-ffffff -> background-color: #ffffff;
+
+# Override color on medium devices (tablets, 768px and up)
+- c-md-ffffff -> color: #ffffff;
+- bc-md-ffffff -> background-color: #ffffff;
+
+# Override color on large devices (desktops, 992px and up)
+- c-lg-ffffff -> color: #ffffff;
+- bc-lg-ffffff -> background-color: #ffffff;
+
+# Override color on Extra large devices (large desktops, 1200px and up)
+- c-xl-ffffff -> color: #ffffff;
+- bc-xl-ffffff -> background-color: #ffffff;
+*/
+
+@mixin generateColor($prefix, $property) {
+  @for $i from 1 through length($colors) {
+    $color: nth($colors, $i);
+    $colorName: str-slice($color, 2);
+    .#{$prefix}-#{$colorName} {
+      #{$property}: #{$color};
+    }
+  }
+}
+
+@mixin generateBackgroundColor($prefix, $property) {
+  @for $i from 1 through length($colors) {
+    $color: nth($colors, $i);
+    $colorName: str-slice($color, 2);
+    .#{$prefix}-#{$colorName} {
+      #{$property}: #{$color};
+    }
+  }
+}
+
+@include generateColor('c', 'color');
+@include generateBackgroundColor('bc', 'background-color');
+
+// SM - Override style on small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  @include generateColor('c-sm', 'color');
+  @include generateBackgroundColor('bc-sm', 'background-color');
+}
+
+// MD - Override style on medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint
+@media (min-width: 768px) {
+  @include generateColor('c-md', 'color');
+  @include generateBackgroundColor('bc-md', 'background-color');
+}
+
+// LG - Override style on large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  @include generateColor('c-lg', 'color');
+  @include generateBackgroundColor('bc-lg', 'background-color');
+}
+
+// XL - Override style on extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  @include generateColor('c-xl', 'color');
+  @include generateBackgroundColor('bc-xl', 'background-color');
+}

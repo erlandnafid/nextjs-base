@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import './variables.scss';
+@import './fonts.scss';
+@import './colors.scss';
+@import './sizes.scss';
+@import './spacings.scss';
+@import './customs.scss';
+@import './forms.scss';
+@import './buttons.scss';
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  background: #ffffff;
+  font-family: 'Inter', sans-serif;
+  width: 100%;
+  height: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+// SM - Override style on small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  // Your style goes here
+}
+
+// MD - Override style on medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint
+@media (min-width: 768px) {
+  // Your style goes here
+}
+
+// LG - Override style on large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  // Your style goes here
+}
+
+// XL - Override style on extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  // Your style goes here
+}
+
+// XSR - Override style on extra small retina devices (potrait phones, 320px and up)
+@media only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 320px),
+  only screen and (min--moz-device-pixel-ratio: 2) and (min-width: 320px),
+  only screen and (-o-min-device-pixel-ratio: 2/1) and (min-width: 320px),
+  only screen and (min-device-pixel-ratio: 2) and (min-width: 320px),
+  only screen and (min-resolution: 192dpi) and (min-width: 320px),
+  only screen and (min-resolution: 2dppx) and (min-width: 320px) {
+  // Your style goes here
+}
+
+// SMR - Override style on small retina devices (landscape phones, 576px and up)
+@media only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 576px),
+  only screen and (min--moz-device-pixel-ratio: 2) and (min-width: 576px),
+  only screen and (-o-min-device-pixel-ratio: 2/1) and (min-width: 576px),
+  only screen and (min-device-pixel-ratio: 2) and (min-width: 576px),
+  only screen and (min-resolution: 192dpi) and (min-width: 576px),
+  only screen and (min-resolution: 2dppx) and (min-width: 576px) {
+  // Your style goes here
+}
+
+// MDR - Override style on medium retina devices (tablets, 768px and up) The navbar toggle appears at this breakpoint
+@media only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 768px),
+  only screen and (min--moz-device-pixel-ratio: 2) and (min-width: 768px),
+  only screen and (-o-min-device-pixel-ratio: 2/1) and (min-width: 768px),
+  only screen and (min-device-pixel-ratio: 2) and (min-width: 768px),
+  only screen and (min-resolution: 192dpi) and (min-width: 768px),
+  only screen and (min-resolution: 2dppx) and (min-width: 768px) {
+  // Your style goes here
+}
+
+// LGR - Large retina devices (desktops, 992px and up)
+@media only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 992px),
+  only screen and (min--moz-device-pixel-ratio: 2) and (min-width: 992px),
+  only screen and (-o-min-device-pixel-ratio: 2/1) and (min-width: 992px),
+  only screen and (min-device-pixel-ratio: 2) and (min-width: 992px),
+  only screen and (min-resolution: 192dpi) and (min-width: 992px),
+  only screen and (min-resolution: 2dppx) and (min-width: 992px) {
+  // Your style goes here
+}
+
+// XLR - Override style on extra large retina devices (large desktops, 1200px and up)
+@media only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 1200px),
+  only screen and (min--moz-device-pixel-ratio: 2) and (min-width: 1200px),
+  only screen and (-o-min-device-pixel-ratio: 2/1) and (min-width: 1200px),
+  only screen and (min-device-pixel-ratio: 2) and (min-width: 1200px),
+  only screen and (min-resolution: 192dpi) and (min-width: 1200px),
+  only screen and (min-resolution: 2dppx) and (min-width: 1200px) {
+  // Your style goes here
+}

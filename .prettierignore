@@ -1,0 +1,8 @@
+node_modules/*
+public/*
+coverage/*
+docs/*
+.next/*
+
+README.md
+next-env.d.ts

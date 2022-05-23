@@ -1,0 +1,6 @@
+export const GLOBAL = {
+  LOADING: 'LOADING',
+  MENU: 'MENU',
+  BANKS: 'BANKS',
+  MENU_SLIDER: 'MENU_SLIDER',
+}

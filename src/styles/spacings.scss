@@ -1,0 +1,597 @@
+/* 
+# Margin
+- m-auto    -> margin: auto;
+- m-100px   -> margin: 100px;
+- mx-100px  -> margin-left: 100px; margin-right: 100px;
+- my-100px  -> margin-top: 100px; margin-bottom: 100px;
+- mt-100px  -> margin-top: 100px;
+- me-100px  -> margin-right: 100px;
+- mb-100px  -> margin-bottom: 100px;
+- ms-100px  -> margin-left: 100px;
+
+# Padding
+- p-auto    -> padding: auto;
+- p-100px   -> padding: 100px;
+- px-100px  -> padding-left: 100px; padding-right: 100px;
+- py-100px  -> padding-top: 100px; padding-bottom: 100px;
+- pt-100px  -> padding-top: 100px;
+- pe-100px  -> padding-right: 100px;
+- pb-100px  -> padding-bottom: 100px;
+- ps-100px  -> padding-left: 100px;
+
+# Override margin/padding on small devices (landscape phones, 576px and up)
+- m-sm-100px   -> margin: 100px;
+- p-sm-100px   -> padding: 100px;
+
+# Override margin/padding on medium devices (tablets, 768px and up)
+- m-md-100px   -> margin: 100px;
+- p-md-100px   -> padding: 100px;
+
+# Override margin/padding on large devices (desktops, 992px and up)
+- m-lg-100px   -> margin: 100px;
+- p-lg-100px   -> padding: 100px;
+
+# Override margin/padding on Extra large devices (large desktops, 1200px and up)
+- m-xl-100px   -> margin: 100px;
+- p-xl-100px   -> padding: 100px;
+*/
+
+.m-auto {
+  margin: auto;
+}
+
+.mx-auto {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.my-auto {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.mt-auto {
+  margin-top: auto;
+}
+
+.me-auto {
+  margin-right: auto;
+}
+
+.mb-auto {
+  margin-bottom: auto;
+}
+
+.ms-auto {
+  margin-left: auto;
+}
+
+.p-auto {
+  padding: auto;
+}
+
+.px-auto {
+  padding-right: auto;
+  padding-left: auto;
+}
+
+.py-auto {
+  padding-top: auto;
+  padding-bottom: auto;
+}
+
+.pt-auto {
+  padding-top: auto;
+}
+
+.pe-auto {
+  padding-right: auto;
+}
+
+.pb-auto {
+  padding-bottom: auto;
+}
+
+.ps-auto {
+  padding-left: auto;
+}
+
+$margins: (
+  (m, margin-top, margin-right, margin-bottom, margin-left),
+  (mx, margin-right, margin-left),
+  (my, margin-top, margin-bottom),
+  (mt, margin-top),
+  (me, margin-right),
+  (mb, margin-bottom),
+  (ms, margin-left)
+);
+
+$paddings: (
+  (p, padding-top, padding-right, padding-bottom, padding-left),
+  (px, padding-right, padding-left),
+  (py, padding-top, padding-bottom),
+  (pt, padding-top),
+  (pe, padding-right),
+  (pb, padding-bottom),
+  (ps, padding-left)
+);
+
+@mixin generateMargin($prefix, $property) {
+  @for $i from 1 through length($sizes) {
+    $size: nth($sizes, $i);
+    .#{$prefix}-#{$size} {
+      @if $prefix ==
+        'm' or
+        $prefix ==
+        'm-sm' or
+        $prefix ==
+        'm-md' or
+        $prefix ==
+        'm-lg' or
+        $prefix ==
+        'm-xl'
+      {
+        margin-top: $px * $size;
+        margin-right: $px * $size;
+        margin-bottom: $px * $size;
+        margin-left: $px * $size;
+      } @else if
+        $prefix ==
+        'mx' or
+        $prefix ==
+        'mx-sm' or
+        $prefix ==
+        'mx-md' or
+        $prefix ==
+        'mx-lg' or
+        $prefix ==
+        'mx-xl'
+      {
+        margin-right: $px * $size;
+        margin-left: $px * $size;
+      } @else if
+        $prefix ==
+        'my' or
+        $prefix ==
+        'my-sm' or
+        $prefix ==
+        'my-md' or
+        $prefix ==
+        'my-lg' or
+        $prefix ==
+        'my-xl'
+      {
+        margin-top: $px * $size;
+        margin-bottom: $px * $size;
+      } @else {
+        #{$property}: $px * $size;
+      }
+    }
+  }
+}
+
+@mixin generatePadding($prefix, $property) {
+  @for $i from 1 through length($sizes) {
+    $size: nth($sizes, $i);
+    .#{$prefix}-#{$size} {
+      @if $prefix ==
+        'p' or
+        $prefix ==
+        'p-sm' or
+        $prefix ==
+        'p-md' or
+        $prefix ==
+        'p-lg' or
+        $prefix ==
+        'p-xl'
+      {
+        padding-top: $px * $size;
+        padding-right: $px * $size;
+        padding-bottom: $px * $size;
+        padding-left: $px * $size;
+      } @else if
+        $prefix ==
+        'px' or
+        $prefix ==
+        'px-sm' or
+        $prefix ==
+        'px-md' or
+        $prefix ==
+        'px-lg' or
+        $prefix ==
+        'px-xl'
+      {
+        padding-right: $px * $size;
+        padding-left: $px * $size;
+      } @else if
+        $prefix ==
+        'py' or
+        $prefix ==
+        'py-sm' or
+        $prefix ==
+        'py-md' or
+        $prefix ==
+        'py-lg' or
+        $prefix ==
+        'py-xl'
+      {
+        padding-top: $px * $size;
+        padding-bottom: $px * $size;
+      } @else {
+        #{$property}: $px * $size;
+      }
+    }
+  }
+}
+
+@each $margin in $margins {
+  @include generateMargin(nth($margin, 1), nth($margin, 2));
+}
+
+@each $padding in $paddings {
+  @include generatePadding(nth($padding, 1), nth($padding, 2));
+}
+
+// SM - Override margin/padding on small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .m-sm-auto {
+    margin: auto;
+  }
+
+  .mx-sm-auto {
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .my-sm-auto {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+  .mt-sm-auto {
+    margin-top: auto;
+  }
+
+  .me-sm-auto {
+    margin-right: auto;
+  }
+
+  .mb-sm-auto {
+    margin-bottom: auto;
+  }
+
+  .ms-sm-auto {
+    margin-left: auto;
+  }
+
+  .p-sm-auto {
+    padding: auto;
+  }
+
+  .px-sm-auto {
+    padding-right: auto;
+    padding-left: auto;
+  }
+
+  .py-sm-auto {
+    padding-top: auto;
+    padding-bottom: auto;
+  }
+
+  .pt-sm-auto {
+    padding-top: auto;
+  }
+
+  .pe-sm-auto {
+    padding-right: auto;
+  }
+
+  .pb-sm-auto {
+    padding-bottom: auto;
+  }
+
+  .ps-sm-auto {
+    padding-left: auto;
+  }
+
+  $margins-sm: (
+    (m-sm, margin-top, margin-right, margin-bottom, margin-left),
+    (mx-sm, margin-right, margin-left),
+    (my-sm, margin-top, margin-bottom),
+    (mt-sm, margin-top),
+    (mr-sm, margin-right),
+    (mb-sm, margin-bottom),
+    (ml-sm, margin-left)
+  );
+
+  $paddings-sm: (
+    (p-sm, padding-top, padding-right, padding-bottom, padding-left),
+    (px-sm, padding-right, padding-left),
+    (py-sm, padding-top, padding-bottom),
+    (pt-sm, padding-top),
+    (pe-sm, padding-right),
+    (pb-sm, padding-bottom),
+    (ps-sm, padding-left)
+  );
+
+  @each $margin in $margins-sm {
+    @include generateMargin(nth($margin, 1), nth($margin, 2));
+  }
+
+  @each $padding in $paddings-sm {
+    @include generatePadding(nth($padding, 1), nth($padding, 2));
+  }
+}
+
+// MD - Override margin/padding on medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint
+@media (min-width: 768px) {
+  .m-md-auto {
+    margin: auto;
+  }
+
+  .mx-md-auto {
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .my-md-auto {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+  .mt-md-auto {
+    margin-top: auto;
+  }
+
+  .me-md-auto {
+    margin-right: auto;
+  }
+
+  .mb-md-auto {
+    margin-bottom: auto;
+  }
+
+  .ms-md-auto {
+    margin-left: auto;
+  }
+
+  .p-md-auto {
+    padding: auto;
+  }
+
+  .px-md-auto {
+    padding-right: auto;
+    padding-left: auto;
+  }
+
+  .py-md-auto {
+    padding-top: auto;
+    padding-bottom: auto;
+  }
+
+  .pt-md-auto {
+    padding-top: auto;
+  }
+
+  .pe-md-auto {
+    padding-right: auto;
+  }
+
+  .pb-md-auto {
+    padding-bottom: auto;
+  }
+
+  .ps-md-auto {
+    padding-left: auto;
+  }
+
+  $margins-md: (
+    (m-md, margin-top, margin-right, margin-bottom, margin-left),
+    (mx-md, margin-right, margin-left),
+    (my-md, margin-top, margin-bottom),
+    (mt-md, margin-top),
+    (mr-md, margin-right),
+    (mb-md, margin-bottom),
+    (ml-md, margin-left)
+  );
+
+  $paddings-md: (
+    (p-md, padding-top, padding-right, padding-bottom, padding-left),
+    (px-md, padding-right, padding-left),
+    (py-md, padding-top, padding-bottom),
+    (pt-md, padding-top),
+    (pe-md, padding-right),
+    (pb-md, padding-bottom),
+    (ps-md, padding-left)
+  );
+
+  @each $margin in $margins-md {
+    @include generateMargin(nth($margin, 1), nth($margin, 2));
+  }
+
+  @each $padding in $paddings-md {
+    @include generatePadding(nth($padding, 1), nth($padding, 2));
+  }
+}
+
+// LG - Override margin/padding on large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .m-lg-auto {
+    margin: auto;
+  }
+
+  .mx-lg-auto {
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .my-lg-auto {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+  .mt-lg-auto {
+    margin-top: auto;
+  }
+
+  .me-lg-auto {
+    margin-right: auto;
+  }
+
+  .mb-lg-auto {
+    margin-bottom: auto;
+  }
+
+  .ms-lg-auto {
+    margin-left: auto;
+  }
+
+  .p-lg-auto {
+    padding: auto;
+  }
+
+  .px-lg-auto {
+    padding-right: auto;
+    padding-left: auto;
+  }
+
+  .py-lg-auto {
+    padding-top: auto;
+    padding-bottom: auto;
+  }
+
+  .pt-lg-auto {
+    padding-top: auto;
+  }
+
+  .pe-lg-auto {
+    padding-right: auto;
+  }
+
+  .pb-lg-auto {
+    padding-bottom: auto;
+  }
+
+  .ps-lg-auto {
+    padding-left: auto;
+  }
+
+  $margins-lg: (
+    (m-lg, margin-top, margin-right, margin-bottom, margin-left),
+    (mx-lg, margin-right, margin-left),
+    (my-lg, margin-top, margin-bottom),
+    (mt-lg, margin-top),
+    (mr-lg, margin-right),
+    (mb-lg, margin-bottom),
+    (ml-lg, margin-left)
+  );
+
+  $paddings-lg: (
+    (p-lg, padding-top, padding-right, padding-bottom, padding-left),
+    (px-lg, padding-right, padding-left),
+    (py-lg, padding-top, padding-bottom),
+    (pt-lg, padding-top),
+    (pe-lg, padding-right),
+    (pb-lg, padding-bottom),
+    (ps-lg, padding-left)
+  );
+
+  @each $margin in $margins-lg {
+    @include generateMargin(nth($margin, 1), nth($margin, 2));
+  }
+
+  @each $padding in $paddings-lg {
+    @include generatePadding(nth($padding, 1), nth($padding, 2));
+  }
+}
+
+// XL - Override margin/padding on extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .m-xl-auto {
+    margin: auto;
+  }
+
+  .mx-xl-auto {
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .my-xl-auto {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+  .mt-xl-auto {
+    margin-top: auto;
+  }
+
+  .me-xl-auto {
+    margin-right: auto;
+  }
+
+  .mb-xl-auto {
+    margin-bottom: auto;
+  }
+
+  .ms-xl-auto {
+    margin-left: auto;
+  }
+
+  .p-xl-auto {
+    padding: auto;
+  }
+
+  .px-xl-auto {
+    padding-right: auto;
+    padding-left: auto;
+  }
+
+  .py-xl-auto {
+    padding-top: auto;
+    padding-bottom: auto;
+  }
+
+  .pt-xl-auto {
+    padding-top: auto;
+  }
+
+  .pe-xl-auto {
+    padding-right: auto;
+  }
+
+  .pb-xl-auto {
+    padding-bottom: auto;
+  }
+
+  .ps-xl-auto {
+    padding-left: auto;
+  }
+
+  $margins-xl: (
+    (m-xl, margin-top, margin-right, margin-bottom, margin-left),
+    (mx-xl, margin-right, margin-left),
+    (my-xl, margin-top, margin-bottom),
+    (mt-xl, margin-top),
+    (mr-xl, margin-right),
+    (mb-xl, margin-bottom),
+    (ml-xl, margin-left)
+  );
+
+  $paddings-xl: (
+    (p-xl, padding-top, padding-right, padding-bottom, padding-left),
+    (px-xl, padding-right, padding-left),
+    (py-xl, padding-top, padding-bottom),
+    (pt-xl, padding-top),
+    (pe-xl, padding-right),
+    (pb-xl, padding-bottom),
+    (ps-xl, padding-left)
+  );
+
+  @each $margin in $margins-xl {
+    @include generateMargin(nth($margin, 1), nth($margin, 2));
+  }
+
+  @each $padding in $paddings-xl {
+    @include generatePadding(nth($padding, 1), nth($padding, 2));
+  }
+}

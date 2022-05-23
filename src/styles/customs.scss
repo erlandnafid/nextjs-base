@@ -1,0 +1,46 @@
+.user-select-none {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.one-paragraph {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  // word-break: break-all;
+}
+
+.two-paragraph {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  // word-break: break-all;
+}
+
+// SM - Override style on small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  // Your styles goes here
+}
+
+// MD - Override style on medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint
+@media (min-width: 768px) {
+  // Your styles goes here
+}
+
+// LG - Override style on large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  // Your styles goes here
+}
+
+// XL - Override style on extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  // Your styles goes here
+}

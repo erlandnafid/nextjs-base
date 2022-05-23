@@ -1,0 +1,207 @@
+/* 
+# Width
+- w-auto          -> width: auto;
+- w-100           -> width: 100%;
+- w-100px         -> width: 100px;
+- w-100vw         -> width: 100vw;
+
+# Height
+- h-auto          -> height: auto;
+- h-100           -> height: 100%;
+- h-100px         -> height: 100px;
+- h-100vh         -> height: 100vh;
+
+# Override width/height on small devices (landscape phones, 576px and up)
+- w-sm-100        -> width: 100%;
+- h-sm-100        -> height: 100%;
+
+# Override width/height on medium devices (tablets, 768px and up)
+- w-md-100        -> width: 100%;
+- h-md-100        -> height: 100%;
+
+# Override width/height on large devices (desktops, 992px and up)
+- w-lg-100        -> width: 100%;
+- h-lg-100        -> height: 100%;
+
+# Override width/height on Extra large devices (large desktops, 1200px and up)
+- w-xl-100        -> width: 100%;
+- h-xl-100        -> height: 100%;
+
+# Min width/height
+- w-min-100       -> min-width: 100%;
+- h-min-100       -> min-height: 100%;
+
+# Override min width/height on small devices (landscape phones, 576px and up)
+- w-min-sm-100    -> min-width: 100%;
+- h-min-sm-100    -> min-height: 100%;
+
+# Override min width/height on medium devices (tablets, 768px and up)
+- w-min-md-100    -> min-width: 100%;
+- h-min-md-100    -> min-height: 100%;
+
+# Override min width/height on large devices (desktops, 992px and up)
+- w-min-lg-100    -> min-width: 100%;
+- h-min-lg-100    -> min-height: 100%;
+
+# Override min width/height on Extra large devices (large desktops, 1200px and up)
+- w-min-xl-100    -> min-width: 100%;
+- h-min-xl-100    -> min-height: 100%;
+
+# Max width/height
+- w-max-100       -> max-width: 100%;
+- h-max-100       -> max-height: 100%;
+
+# Override max width/height on small devices (landscape phones, 576px and up)
+- w-max-sm-100    -> max-width: 100%;
+- h-max-sm-100    -> max-height: 100%;
+
+# Override max width/height on medium devices (tablets, 768px and up)
+- w-max-md-100    -> max-width: 100%;
+- h-max-md-100    -> max-height: 100%;
+
+# Override max width/height on large devices (desktops, 992px and up)
+- w-max-lg-100    -> max-width: 100%;
+- h-max-lg-100    -> max-height: 100%;
+
+# Override max width/height on Extra large devices (large desktops, 1200px and up)
+- w-max-xl-100    -> max-width: 100;
+- h-max-xl-100    -> maxheighth: 100;
+*/
+
+.w-auto {
+  width: auto;
+}
+
+.h-auto {
+  height: auto;
+}
+
+@mixin generateWidth($prefix, $property) {
+  @for $i from 1 through length($sizes) {
+    $size: nth($sizes, $i);
+    .#{$prefix}-#{$size} {
+      #{$property}: $percent * $size !important;
+    }
+  }
+
+  @for $i from 1 through length($sizes) {
+    $size: nth($sizes, $i);
+    .#{$prefix}-#{$size}px {
+      #{$property}: $px * $size !important;
+    }
+  }
+
+  @for $i from 1 through length($sizes) {
+    $size: nth($sizes, $i);
+    .#{$prefix}-#{$size}vw {
+      #{$property}: $vw * $size !important;
+    }
+  }
+}
+
+@mixin heightCreator($prefix, $property) {
+  @for $i from 1 through length($sizes) {
+    $size: nth($sizes, $i);
+    .#{$prefix}-#{$size} {
+      #{$property}: $percent * $size !important;
+    }
+  }
+
+  @for $i from 1 through length($sizes) {
+    $size: nth($sizes, $i);
+    .#{$prefix}-#{$size}px {
+      #{$property}: $px * $size !important;
+    }
+  }
+
+  @for $i from 1 through length($sizes) {
+    $size: nth($sizes, $i);
+    .#{$prefix}-#{$size}vh {
+      #{$property}: $vh * $size !important;
+    }
+  }
+}
+
+@include heightCreator(h, height);
+@include heightCreator(h-min, min-height);
+@include heightCreator(h-max, max-height);
+
+@include generateWidth(w, width);
+@include generateWidth(w-min, min-width);
+@include generateWidth(w-max, max-width);
+
+// SM - Override width/height on small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  w-sm-auto {
+    width: auto;
+  }
+
+  h-sm-auto {
+    height: auto;
+  }
+
+  @include generateWidth(w-sm, width);
+  @include generateWidth(w-min-sm, min-width);
+  @include generateWidth(w-max-sm, max-width);
+
+  @include heightCreator(h-sm, height);
+  @include heightCreator(h-min-sm, min-height);
+  @include heightCreator(h-max-sm, max-height);
+}
+
+// MD - Override width/height on medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint
+@media (min-width: 768px) {
+  w-md-auto {
+    width: auto;
+  }
+
+  h-md-auto {
+    height: auto;
+  }
+
+  @include generateWidth(w-md, width);
+  @include generateWidth(w-min-md, min-width);
+  @include generateWidth(w-max-md, max-width);
+
+  @include heightCreator(h-md, height);
+  @include heightCreator(h-min-md, min-height);
+  @include heightCreator(h-max-md, max-height);
+}
+
+// LG - Override width/height on large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  w-lg-auto {
+    width: auto;
+  }
+
+  h-lg-auto {
+    height: auto;
+  }
+
+  @include generateWidth(w-lg, width);
+  @include generateWidth(w-min-lg, min-width);
+  @include generateWidth(w-max-lg, max-width);
+
+  @include heightCreator(h-lg, height);
+  @include heightCreator(h-min-lg, min-height);
+  @include heightCreator(h-max-lg, max-height);
+}
+
+// XL - Override width/height on extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  w-xl-auto {
+    width: auto;
+  }
+
+  h-xl-auto {
+    height: auto;
+  }
+
+  @include generateWidth(w-xl, width);
+  @include generateWidth(w-min-xl, min-width);
+  @include generateWidth(w-max-xl, max-width);
+
+  @include heightCreator(h-xl, height);
+  @include heightCreator(h-min-xl, min-height);
+  @include heightCreator(h-max-xl, max-height);
+}
