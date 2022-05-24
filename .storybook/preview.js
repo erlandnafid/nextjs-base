@@ -1,5 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
-import '@styles/globals.scss'
+import '@styles/main.scss'
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },

@@ -1,9 +1,9 @@
 import { Formik } from 'formik'
 import * as yup from 'yup'
 import { Form } from 'react-bootstrap'
-import Button from '@comps/ui/Button'
-import Input from '@comps/ui/Input'
-import InputPassword from '@comps/ui/InputPassword'
+import Button from '@comps/commons/Button'
+import Input from '@comps/commons/Input'
+import InputPassword from '@comps/commons/InputPassword'
 import http from '@services/endpoints/http'
 import { useRouter } from 'next/router'
 

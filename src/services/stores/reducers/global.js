@@ -1,4 +1,4 @@
-import { GLOBAL } from '@services/redux/type'
+import { GLOBAL } from '@services/stores/types'
 
 const initialState = {
   loading: false,

@@ -1,4 +1,4 @@
-import helper from '@services/helper'
+import helper from '@services/helpers'
 
 class endpoints {
   host = () => process.env.NEXT_PUBLIC_API_HOST

@@ -1,4 +1,4 @@
-import Unauthorized from '@comps/ui/Unauthorized'
+import Unauthorized from '@comps/commons/Unauthorized'
 
 const ProtectedRoutes = (Component) => {
   const Protected = (props) => {

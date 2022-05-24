@@ -1,5 +1,5 @@
 import endpoint from '@services/endpoints'
-import helper from '@services/helper'
+import helper from '@services/helpers'
 import axios from 'axios'
 
 class https {

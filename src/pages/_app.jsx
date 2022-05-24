@@ -1,13 +1,13 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
-import '@styles/globals.scss'
+import '@styles/main.scss'
 
 import React from 'react'
-import initStore from '@services/redux'
+import initStore from '@services/stores'
 import { Provider } from 'react-redux'
 import { ToastContainer } from 'react-toastify'
 
 import 'react-toastify/dist/ReactToastify.css'
-import helper from '@services/helper'
+import helper from '@services/helpers'
 
 const MyApp = (props) => {
   const { Component, pageProps, isAuth } = props
