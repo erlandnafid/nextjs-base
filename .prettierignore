@@ -4,6 +4,8 @@ coverage/*
 docs/*
 storybook-static/*
 .next/*
+.netlify/*
+_next/*
 
 README.md
 next-env.d.ts
