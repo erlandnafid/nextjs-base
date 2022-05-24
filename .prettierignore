@@ -2,6 +2,7 @@ node_modules/*
 public/*
 coverage/*
 docs/*
+storybook-static/*
 .next/*
 
 README.md
