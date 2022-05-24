@@ -9,7 +9,8 @@
     "lint": "next lint",
     "test": "jest --ci",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@sentry/nextjs": "^6.19.7",
@@ -46,7 +47,7 @@
     "eslint": "8.15.0",
     "eslint-config-next": "12.1.6",
     "eslint-plugin-storybook": "^0.5.12",
-    "husky": "^8.0.1",
+    "husky": "^8.0.0",
     "jest": "^28.1.0",
     "jest-environment-jsdom": "^28.1.0",
     "prettier": "^2.6.2",

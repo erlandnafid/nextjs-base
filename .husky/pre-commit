@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "Format the code with prettier..."
+npx prettier --write .
+echo "Checking the ESLint..."
+yarn lint
+echo "Run unit testing..."
+yarn test
+echo "Building the project..."
+yarn build
