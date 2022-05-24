@@ -1,23 +1,21 @@
 import helper from '@services/helper'
 
-class apis {
+class endpoints {
   host = () => process.env.NEXT_PUBLIC_API_HOST
   headers = () => {
     const res = {
-      'api-key': process.env.NEXT_PUBLIC_API_KEY,
       'Content-Type': 'application/json',
     }
     return res
   }
   headersAuth = (ctx) => {
     const res = {
-      'api-key': process.env.NEXT_PUBLIC_API_KEY,
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${helper.cookieGet({ name: 'e12L4nd', ctx })}`,
+      Authorization: `Bearer ${helper.cookieGet({ name: 'token', ctx })}`,
     }
     return res
   }
 }
 
-const api = new apis()
-export default api
+const endpoint = new endpoints()
+export default endpoint

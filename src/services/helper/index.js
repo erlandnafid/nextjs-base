@@ -41,15 +41,16 @@ class helpers {
     if (type === 'success') {
       toast.success(payload)
     } else {
-      typeof payload === 'string' ? toast.error(payload) : toast.error(payload.message)
+      payload?.response?.data?.message
+        ? toast.error(payload.response.data.message)
+        : toast.error(payload?.message || 'Something went wrong')
     }
   }
 
   isAuthenticated = (ctx) => {
     let is_authenticated = false
-    const cookies = nookies.get(ctx)
-    const token = cookies.e12L4nd
-    const token_verification = cookies.n4f1D
+    const token = this.cookieGet({ ctx, name: 'token' })
+    const token_verification = this.cookieGet({ ctx, name: 'token_verification' })
 
     if (token && token_verification && token === token_verification) {
       is_authenticated = true

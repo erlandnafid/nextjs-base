@@ -4,11 +4,18 @@ import { Form } from 'react-bootstrap'
 import Button from '@comps/ui/Button'
 import Input from '@comps/ui/Input'
 import InputPassword from '@comps/ui/InputPassword'
+import http from '@services/endpoints/http'
+import { useRouter } from 'next/router'
 
 export default function Home() {
-  const onLogin = (values) => {
-    console.log(values)
-    throw new Error('Test sentry error on login')
+  const router = useRouter()
+
+  const onLogin = async (values) => {
+    const login = await http.loginPost(values)
+
+    if (login.status === 'OK') {
+      router.push('/dashboard')
+    }
   }
 
   return (
@@ -18,12 +25,13 @@ export default function Home() {
       <div style={{ width: 500 }}>
         <Formik
           initialValues={{
-            email: '',
-            password: '',
+            email: 'efriskiawan@binar.co.id',
+            password: 'DzH66',
+            token: 'lKBL0yp7rejmORalE-jmEw',
           }}
           validationSchema={yup.object().shape({
             email: yup.string().email().required('Field is required'),
-            password: yup.string().min(8).required('Field is required'),
+            password: yup.string().min(5).required('Field is required'),
           })}
           onSubmit={onLogin}
         >

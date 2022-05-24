@@ -7,6 +7,7 @@
 
 # testing
 /coverage
+/storybook-static
 
 # next.js
 /.next/
@@ -33,3 +34,6 @@ yarn-error.log*
 
 # Sentry
 .sentryclirc
+
+# Local Netlify folder
+.netlify
