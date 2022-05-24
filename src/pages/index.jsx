@@ -8,6 +8,7 @@ import InputPassword from '@comps/ui/InputPassword'
 export default function Home() {
   const onLogin = (values) => {
     console.log(values)
+    throw new Error('Test sentry error on login')
   }
 
   return (
@@ -47,7 +48,7 @@ export default function Home() {
                 classNameFormGroup="mt-20"
               />
 
-              <Button type="submit" text="Simpan" className="mt-20" />
+              <Button type="submit" label="Simpan" className="mt-20" />
             </Form>
           )}
         </Formik>

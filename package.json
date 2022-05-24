@@ -6,9 +6,13 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "jest --ci",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
+    "@sentry/nextjs": "^6.19.7",
     "bootstrap": "^5.1.3",
     "formik": "^2.2.9",
     "moment": "^2.29.3",
@@ -26,9 +30,26 @@
     "yup": "^0.32.11"
   },
   "devDependencies": {
+    "@babel/core": "^7.18.0",
+    "@storybook/addon-essentials": "^6.5.4",
+    "@storybook/addon-interactions": "^6.5.4",
+    "@storybook/addon-links": "^6.5.4",
+    "@storybook/builder-webpack5": "^6.5.4",
+    "@storybook/manager-webpack5": "^6.5.4",
+    "@storybook/preset-scss": "^1.0.3",
+    "@storybook/react": "^6.5.4",
+    "@storybook/testing-library": "^0.0.11",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.2.0",
+    "@testing-library/user-event": "^14.2.0",
+    "babel-loader": "^8.2.5",
     "eslint": "8.15.0",
     "eslint-config-next": "12.1.6",
+    "eslint-plugin-storybook": "^0.5.12",
     "husky": "^8.0.1",
-    "prettier": "^2.6.2"
+    "jest": "^28.1.0",
+    "jest-environment-jsdom": "^28.1.0",
+    "prettier": "^2.6.2",
+    "sass-loader": "^13.0.0"
   }
 }

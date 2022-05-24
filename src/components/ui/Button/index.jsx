@@ -23,7 +23,7 @@ const Button = (props) => {
               <div className="ms-16"></div>
             </>
           )}
-          {props.text}
+          {props.label}
           {props.iconEnd && (
             <>
               <div className="ms-16"></div>
