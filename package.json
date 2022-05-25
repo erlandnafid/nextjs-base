@@ -16,7 +16,8 @@
     "e2e:ci": "start-server-and-test start http://localhost:3000 cypress:headless",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "docs": "jsdoc -c jsdoc.json -R README.md"
   },
   "dependencies": {
     "@sentry/nextjs": "^6.19.7",
@@ -59,6 +60,7 @@
     "husky": "^8.0.0",
     "jest": "^28.1.0",
     "jest-environment-jsdom": "^28.1.0",
+    "jsdoc": "^3.6.10",
     "prettier": "^2.6.2",
     "sass-loader": "^13.0.0",
     "start-server-and-test": "^1.14.0"

@@ -6,6 +6,7 @@ import Input from '@comps/commons/Input'
 import http from '@services/endpoints/http'
 import classes from './index.module.scss'
 import React from 'react'
+import TodoList from '@comps/pages/home/TodoList'
 
 export default function Home() {
   const [todos, set_todos] = React.useState([])
@@ -55,12 +56,7 @@ export default function Home() {
       </div>
 
       <ul className="mt-50">
-        {todos &&
-          todos.map((todo) => (
-            <li key={todo.name} aria-label="list-todo">
-              {todo.name}
-            </li>
-          ))}
+        <TodoList todos={todos} />
       </ul>
     </div>
   )

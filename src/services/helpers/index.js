@@ -59,6 +59,17 @@ class helpers {
     return is_authenticated
   }
 
+  /**
+   * Helper function to format currency
+   * @namespace currency
+   * @function
+   * @param {String} value - input value
+   * @returns formated currency
+   * @author Erland Nafid <efriskiawan@binar.co.id>
+   * @example
+   * currency('100000');
+   * "Rp 100.000"
+   */
   currency = (value) => {
     let v = value
 
@@ -77,6 +88,18 @@ class helpers {
     return numberFormat.format(v)
   }
 
+  /**
+   * Helper function to format date
+   * @namespace date
+   * @function
+   * @param {String} date - input date
+   * @param {String} format - input format
+   * @returns formated date
+   * @author Erland Nafid <efriskiawan@binar.co.id>
+   * @example
+   * date('2022-05-05', 'DD MMM YYYY');
+   * "05 May 2022"
+   */
   date = (date, format) =>
     format ? moment(date).format(format) : moment(date).format('YYYY-MM-DD')
 }
