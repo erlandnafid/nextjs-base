@@ -5,7 +5,9 @@ echo "Format the code with prettier..."
 npx prettier --write .
 echo "Checking the ESLint..."
 yarn lint
-echo "Run unit testing..."
-yarn test
 echo "Building the project..."
 yarn build
+echo "Run unit testing..."
+yarn test:ci
+echo "Run e2e testing..."
+yarn e2e:ci

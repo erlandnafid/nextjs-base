@@ -7,7 +7,13 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "jest --ci",
+    "test": "jest --watch",
+    "test:ci": "jest --ci",
+    "test:coverage": "jest --coverage",
+    "cypress": "cypress open",
+    "cypress:headless": "cypress run",
+    "e2e": "start-server-and-test start http://localhost:3000 cypress",
+    "e2e:ci": "start-server-and-test start http://localhost:3000 cypress:headless",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "prepare": "husky install"
@@ -46,6 +52,7 @@
     "@testing-library/react": "^13.2.0",
     "@testing-library/user-event": "^14.2.0",
     "babel-loader": "^8.2.5",
+    "cypress": "^9.7.0",
     "eslint": "8.15.0",
     "eslint-config-next": "12.1.6",
     "eslint-plugin-storybook": "^0.5.12",
@@ -53,6 +60,7 @@
     "jest": "^28.1.0",
     "jest-environment-jsdom": "^28.1.0",
     "prettier": "^2.6.2",
-    "sass-loader": "^13.0.0"
+    "sass-loader": "^13.0.0",
+    "start-server-and-test": "^1.14.0"
   }
 }

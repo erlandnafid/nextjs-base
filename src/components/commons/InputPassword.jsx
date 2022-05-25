@@ -28,6 +28,7 @@ const InputPassword = (props) => {
           onChange={props.onChange}
           isInvalid={props.touched[props.name] && Boolean(props.errors[props.name])}
           autoComplete={props.autoComplete || 'off'}
+          aria-label={props['aria-label']}
         />
         <div
           role="button"

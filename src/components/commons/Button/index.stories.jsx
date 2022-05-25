@@ -6,7 +6,15 @@ const config = {
   argTypes: {
     onClick: { action: 'clicked' },
     variant: {
-      options: ['primary', 'secondary'],
+      options: ['primary', 'secondary', 'danger', 'warning', 'success', 'info'],
+      control: { type: 'radio' },
+    },
+    type: {
+      options: ['button', 'submit'],
+      control: { type: 'radio' },
+    },
+    size: {
+      options: ['sm', 'md', 'lg'],
       control: { type: 'radio' },
     },
   },
@@ -20,4 +28,6 @@ export { config as default, button }
 button.args = {
   label: 'Button',
   variant: 'primary',
+  type: 'button',
+  size: 'md',
 }

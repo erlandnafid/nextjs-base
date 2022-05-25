@@ -12,6 +12,7 @@ const Button = (props) => {
       ref={props.custom_ref}
       disabled={props.disable || false}
       size={props.size}
+      aria-label={props['aria-label']}
     >
       {props.loading ? (
         <Spinner as={`span`} animation={`border`} size={`sm`} role={`status`} variant={`light`} />

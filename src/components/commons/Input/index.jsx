@@ -21,8 +21,11 @@ const Input = (props) => {
         onChange={props.onChange}
         isInvalid={props.touched[props.name] && Boolean(props.errors[props.name])}
         autoComplete={props.autoComplete || 'off'}
+        aria-label={props['aria-label']}
       />
-      <Form.Control.Feedback type={`invalid`}>{props.errors[props.name]}</Form.Control.Feedback>
+      <Form.Control.Feedback type={`invalid`} aria-label="invalid-feedback">
+        {props.errors[props.name]}
+      </Form.Control.Feedback>
     </Form.Group>
   )
 }

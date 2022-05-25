@@ -3,64 +3,65 @@ import * as yup from 'yup'
 import { Form } from 'react-bootstrap'
 import Button from '@comps/commons/Button'
 import Input from '@comps/commons/Input'
-import InputPassword from '@comps/commons/InputPassword'
 import http from '@services/endpoints/http'
-import { useRouter } from 'next/router'
+import classes from './index.module.scss'
+import React from 'react'
 
 export default function Home() {
-  const router = useRouter()
+  const [todos, set_todos] = React.useState([])
 
-  const onLogin = async (values) => {
-    const login = await http.loginPost(values)
+  const onAddToDo = async (values) => {
+    set_todos((prev) => [...prev, { name: values.name }])
 
-    if (login.status === 'OK') {
-      router.push('/dashboard')
+    if (!todos) {
+      const addTodo = await http.todoPost(values)
+
+      if (addTodo.status === 'OK') {
+        // Do something
+      }
     }
   }
 
   return (
-    <div>
-      <h1>Login</h1>
-
-      <div style={{ width: 500 }}>
+    <div className={classes.container}>
+      <h1 className="fs-20 fs-lg-30">Todos</h1>
+      <div className="mt-20 mt-lg-30">
         <Formik
           initialValues={{
-            email: 'efriskiawan@binar.co.id',
-            password: 'DzH66',
-            token: 'lKBL0yp7rejmORalE-jmEw',
+            name: '',
           }}
           validationSchema={yup.object().shape({
-            email: yup.string().email().required('Field is required'),
-            password: yup.string().min(5).required('Field is required'),
+            name: yup.string().required('Field is required'),
           })}
-          onSubmit={onLogin}
+          onSubmit={onAddToDo}
         >
           {({ handleSubmit, handleChange, values, touched, errors }) => (
             <Form noValidate onSubmit={handleSubmit}>
               <Input
-                name="email"
-                label="Email"
-                value={values.email}
+                type="text"
+                name="name"
+                label="Name"
+                value={values.name}
                 onChange={handleChange}
                 touched={touched}
                 errors={errors}
+                aria-label="input-name"
               />
 
-              <InputPassword
-                name="password"
-                label="Password"
-                value={values.password}
-                onChange={handleChange}
-                touched={touched}
-                errors={errors}
-                classNameFormGroup="mt-20"
-              />
-
-              <Button type="submit" label="Simpan" className="mt-20" />
+              <Button type="submit" label="Submit" className="mt-20" aria-label="submit-todo" />
             </Form>
           )}
         </Formik>
       </div>
+
+      <ul className="mt-50">
+        {todos &&
+          todos.map((todo) => (
+            <li key={todo.name} aria-label="list-todo">
+              {todo.name}
+            </li>
+          ))}
+      </ul>
     </div>
   )
 }
